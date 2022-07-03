@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<style>
+.buena{
+    background-color: green;
+}
+.mala{
+    background-color: red;
+}
+.par{
+    background-color: gray;
+}
+.impar{
+    background-color: white;
+}
+
+</style>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <td>Movie</td>
+                    <td>Studio</td>
+                    <td>Year</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, i) in movies" :key="i" :class='{"par":esPar(i), "impar": !esPar(i)}'>
+                    <td @click="()=>alerta(item)">{{item.film}}</td>
+                    <td :style="especial(item)">{{item.studio}}</td>
+                    <td v-if='item.studio  != "Paramount"'>{{item.year}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ <script>
+    var app = new Vue({
+        el:"#app",
+        data: {
+            movies: [
+            {
+              "film": "Beauty and the Beast (2017)",
+              "studio": "Paramount",
+              "year": 2018,
+              "rating" : 9
+            },
+            {
+              "film": "Guardians of the Galaxy Vol. 2",
+              "studio": "Disney",
+              "year": 2017,
+              "rating" : 7
+            },
+            {
+              "film": "Wonder Woman",
+              "studio": "Warner Bros.",
+              "year": 2019,
+              "rating" : 4
+            },
+            {
+              "film": "Rogue One: A Star Wars Story",
+              "studio": "Disney",
+              "year": 2020,
+              "rating" : 3
+            },
+            {
+              "film": "Finding Dory",
+              "studio": "Disney",
+              "year": 2021,
+              "rating" : 2
+            }],
+            miEstilo:{
+                "background-color": "gray"
+            }
+        },
+        methods:{
+            especial(payload){
+                if(payload.film === "Wonder Woman"){
+                    return this.miEstilo
+                }
+            },
+            alerta(payload){
+                alert(payload.film)
+            },
+            esPar(indice){
+                if(indice % 2 === 0){
+                    return true
+                }else{
+                    return false
+                }
+            }
+            
+        }
+    })
+ </script>
+</body>
+</html>
