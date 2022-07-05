@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        .card {
+     min-width: 220px;
+     padding: 20px 10px;
+     margin: 10px 10px;
+     font-size: large;
+     color:grey;
+     border-color:palegreen;
+     border-style: solid;
+     border-width: 1px;
+     max-width: 220px;
+     background-color: whitesmoke !important;
+     transition: 0.7s;
+}
+
+.card:hover {
+   box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);
+ }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 class="main-title">CODERMEALS 🍝</h1>
+        <div class="container">
+            <codermeals-card class="card"
+            :portada="portada"
+            :titulo="titulo"
+            :costo="costo">
+         </codermeals-card>
+         
+         
+        </div>
+        </container>
+     
+    </div>
+    <script>
+        Vue.component('codermeals-card', {
+            props: {
+                titulo: String,
+                portada: String,
+                costo: Number
+            },
+
+            template: `<div align="center">
+                    <div>
+                        <img class="img-thumbnail img-cropped" :src="portada" :title="titulo">
+                        <br><br>
+                        <p class="text-black"> {{ titulo }} </p>
+                        <p>$<strong> {{ costo }} </strong></p>
+                    </div>
+                </div>`
+
+
+            ,
+        })
+
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                titulo: "Pizza Napoletana",
+                portada: "https://static.cookist.it/wp-content/uploads/sites/21/2017/12/istock-480277738.jpg",
+
+                costo: 675.00
+                    }
+            })
+
+    </script> 
+</body>
+</html>

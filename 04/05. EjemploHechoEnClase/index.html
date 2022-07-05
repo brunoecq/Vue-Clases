@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .azul { 
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <boton 
+            :clase="miclase" 
+            :estilonueva="miEstilo"
+            :litanueva="listado"
+            >
+        </boton>
+
+
+    </div>
+    <script>
+        Vue.component('boton',{
+            props:{
+                clase: Boolean,
+                litanueva: Array,
+                estilonueva: Object
+            },
+            data: function() {
+                return {
+                    contador: 0
+                }
+            },
+            template: //html
+            `
+            <div>
+                <hr>
+                <table :style="estilonueva" >
+                    <tbody>
+                        <tr v-for="(o, index) in litanueva" :key="o.id">{{ o.nombre }}</tr>
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+            
+            `
+        })
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                sumar: '+',
+                restar: '-',
+                custom: 'soy otro boton',
+                mostrar: true, 
+                miclase: true,
+                listado: [
+                    {
+                        id: 1,
+                        nombre: 'Mauricio'
+                    },
+                    {
+                        id: 2,
+                        nombre: 'Luisa'
+                    },
+                    {
+                        id: 3,
+                        nombre: 'Roberto'
+                    },
+                    {
+                        id: 4,
+                        nombre: 'Rojo'
+                    }
+                ],
+                miEstilo: { 'background': 'blue'}
+            }
+        })
+    </script>
+</body>
+</html>
