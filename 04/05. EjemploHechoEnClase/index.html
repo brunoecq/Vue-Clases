@@ -3,41 +3,70 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <style>
-        .azul { 
-            border: 1px solid green;
+        .letra-verde { 
+            color: green;
         }
+        .letra-blanca { 
+            color: rgb(48, 48, 48);
+        }
+        .letra-naranja { 
+            color: rgb(232, 50, 0);
+        }
+
+        /*Estilo general de tabla*/
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
     </style>
 </head>
 <body>
     <div id="app">
-        <boton 
-            :clase="miclase" 
-            :estilonueva="miEstilo"
-            :litanueva="listado"
-            >
-        </boton>
+        <desafio
+        :listado="listado_uno"
+        :estilo="estilo_uno"
+        :clase="clase_uno"
+        v-on:click.native="clicAfuera"
+        ></desafio>
+        <p @click="clicAfuera">hola</p>
+        <desafio
+        :listado="listado_dos"
+        :estilo="estilo_dos"
+        :clase="clase_dos"
+        ></desafio>
 
+        <desafio
+        :listado="listado_tres"
+        :estilo="estilo_tres"
+        :clase="clase_tres"
+        ></desafio>
 
     </div>
     <script>
-        Vue.component('boton',{
+        //Mi componente
+        Vue.component('desafio', {
             props:{
-                clase: Boolean,
-                litanueva: Array,
-                estilonueva: Object
+                listado: Array,
+                clase: Object,
+                estilo: Object
             },
-            data: function() {
-                return {
-                    contador: 0
-                }
-            },
-            template: //html
+            template:
             `
             <div>
                 <hr>
-                <table :style="estilonueva" >
-                    <tbody>
-                        <tr v-for="(o, index) in litanueva" :key="o.id">{{ o.nombre }}</tr>
+                <table :style="estilo" >
+                    <tbody :class="clase">
+                        <tr v-for="(o, index) in listado" :key="o.id">
+                            <td>{{ o.id }}</td>
+                            <td>{{ o.nombre }}</td>
+                        </tr>
                     </tbody>
                 </table>
                 <hr>
@@ -46,34 +75,38 @@
             `
         })
 
-
-        var app = new Vue({
+        //INSTANCIA PRINCIPAL
+        var padre = new Vue({
             el: '#app',
             data: {
-                sumar: '+',
-                restar: '-',
-                custom: 'soy otro boton',
-                mostrar: true, 
-                miclase: true,
-                listado: [
-                    {
-                        id: 1,
-                        nombre: 'Mauricio'
-                    },
-                    {
-                        id: 2,
-                        nombre: 'Luisa'
-                    },
-                    {
-                        id: 3,
-                        nombre: 'Roberto'
-                    },
-                    {
-                        id: 4,
-                        nombre: 'Rojo'
-                    }
-                ],
-                miEstilo: { 'background': 'blue'}
+                listado_uno: [{"id":1,"nombre":"Etta"},
+                {"id":2,"nombre":"Maribeth"},
+                {"id":3,"nombre":"Mirilla"},
+                {"id":4,"nombre":"Arnuad"},
+                {"id":5,"nombre":"Lay"}],
+                listado_dos: [{"id":1,"nombre":"Elset"},
+                {"id":2,"nombre":"Dmitri"},
+                {"id":3,"nombre":"Flemming"},
+                {"id":4,"nombre":"Margareta"},
+                {"id":5,"nombre":"Maressa"}],
+                listado_tres: [{"id":1,"nombre":"Brett"},
+                {"id":2,"nombre":"Datha"},
+                {"id":3,"nombre":"Constantine"},
+                {"id":4,"nombre":"Clayborne"},
+                {"id":5,"nombre":"Chelsie"}],
+                estilo_uno: { 'background': '#E7FFCE'},
+                estilo_dos: { 'background': '#FFEDCE'},
+                estilo_tres: { 'background': '#EECEFF'},
+                clase_uno: { 'letra-verde': true},
+                clase_dos: { 'letra-blanca': true},
+                clase_tres: { 'letra-naranja': true},
+                flag: false
+            }, 
+            methods: {
+                clicAfuera(){
+                    debugger
+                    alert('hola')
+                }
             }
         })
     </script>
