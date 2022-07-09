@@ -1,24 +1,29 @@
 <template>
   <div id="app">
-    <ThisComponente v-model="username"
-  required
-  label='Label' value='Input'
-  placeholder="Enter your username" class='rojo' msg="Welcome to Your Vue.js App"/>
+    <PrimerComponente v-model="username" required label='Label' value='Input'
+      placeholder="Enter your username" class='rojo' msg="Welcome to Your Vue.js App"/>
+    <SegundoComponente :texto="propQueDebeCambiarDesdeElHijo" @suma= />
   </div>
 </template>
 
 <script>
-import ThisComponente from './components/HelloWorld.vue'
+import PrimerComponente from './components/HelloWorld.vue'
+import SegundoComponente from './components/HelloWorld copy.vue'
 
 export default {
   name: 'App',
   components: {
-    ThisComponente
+    PrimerComponente,
+    SegundoComponente
   },
   data(){
     return {
-      username: ''
+      username: '',
+      propQueDebeCambiarDesdeElHijo: 20
     }
+  },
+  methods: {
+    
   }
 }
 </script>
