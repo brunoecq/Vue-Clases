@@ -6,8 +6,8 @@
       <h1>H1 desde afuera</h1>
       <p slot="main">Encabezado principal</p>
     </TercerComponente>
-
-
+    <CuartoComponente />
+    <QuintoComponente />
   </div>
 </template>
 
@@ -15,13 +15,17 @@
 import PrimerComponente from './components/PrimerComponente.vue'
 import SegundoComponente from './components/SegundoComponente.vue'
 import TercerComponente from './components/TercerComponente.vue'
+import CuartoComponente from './components/CuartoComponente.vue'
+import QuintoComponente from './components/QuintoComponente.vue'
 
 export default {
   name: 'App',
   components: {
     PrimerComponente,
     SegundoComponente,
-    TercerComponente
+    TercerComponente,
+    CuartoComponente,
+    QuintoComponente
   },
   data(){
     return {
