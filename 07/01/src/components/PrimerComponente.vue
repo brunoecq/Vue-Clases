@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'ThisComponente',
+  name: 'PrimerComponente',
   inheritAttrs: false,
   props: {
     msg: String,

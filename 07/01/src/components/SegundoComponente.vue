@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'ThisComponente',
+  name: 'SegundoComponente',
   inheritAttrs: false,
   props: ['texto'],
   data(){

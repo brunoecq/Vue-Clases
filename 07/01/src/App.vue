@@ -1,20 +1,27 @@
 <template>
   <div id="app">
-    <PrimerComponente v-model="username" required label='Label' value='Input'
-      placeholder="Enter your username" class='rojo' msg="Welcome to Your Vue.js App"/>
-    <SegundoComponente :texto="propQueDebeCambiarDesdeElHijo" @suma= />
+    <PrimerComponente v-model="username" required label='Label' value='Input' placeholder="Enter your username" class='rojo' msg="Welcome to Your Vue.js App"/>
+    <SegundoComponente :texto="propQueDebeCambiarDesdeElHijo" @suma="SumaEnElPadre" />
+    <TercerComponente>
+      <h1>H1 desde afuera</h1>
+      <p slot="main">Encabezado principal</p>
+    </TercerComponente>
+
+
   </div>
 </template>
 
 <script>
-import PrimerComponente from './components/HelloWorld.vue'
-import SegundoComponente from './components/HelloWorld copy.vue'
+import PrimerComponente from './components/PrimerComponente.vue'
+import SegundoComponente from './components/SegundoComponente.vue'
+import TercerComponente from './components/TercerComponente.vue'
 
 export default {
   name: 'App',
   components: {
     PrimerComponente,
-    SegundoComponente
+    SegundoComponente,
+    TercerComponente
   },
   data(){
     return {
@@ -23,7 +30,9 @@ export default {
     }
   },
   methods: {
-    
+    SumaEnElPadre(payload){
+      this.propQueDebeCambiarDesdeElHijo = this.propQueDebeCambiarDesdeElHijo + payload
+    }
   }
 }
 </script>
