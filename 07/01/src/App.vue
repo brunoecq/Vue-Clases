@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <ThisComponente msg="Welcome to Your Vue.js App"/>
+    <ThisComponente v-model="username"
+  required
+  label='Label' value='Input'
+  placeholder="Enter your username" class='rojo' msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
@@ -11,6 +14,11 @@ export default {
   name: 'App',
   components: {
     ThisComponente
+  },
+  data(){
+    return {
+      username: ''
+    }
   }
 }
 </script>
@@ -27,6 +35,8 @@ export default {
 .title{
   color:darkslategrey;
   text-shadow: 1px 2px 2px gray;
-
+}
+.rojo{
+  color: #bf2626;
 }
 </style>
