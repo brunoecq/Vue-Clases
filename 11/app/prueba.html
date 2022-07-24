@@ -1,0 +1,35 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.4/dist/vue.js"></script>
+<script>
+  const store = {
+   debug: true,
+   state: {
+      mensaje: "Hola coders!"
+   },
+   setAccionDelMensaje (newValue) {
+     this.debug
+     console.log('Método disparado con ', newValue)
+     this.state.mensaje = newValue
+   },
+   limpiarAccioneDelMensaje () {
+     This.debug
+     console.log('Método disparado')
+     this.state.mensaje = ''
+   }
+}
+
+const vmA = new Vue({
+   data: {
+     privateState: {},
+     sharedState: store.state
+   }
+})
+
+const vmB = new Vue({
+   data: {
+     privateState: {},
+     sharedState: store.state
+   }
+})
+
+  
+  </script>
