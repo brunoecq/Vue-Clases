@@ -11,6 +11,7 @@
     </div>
     <div v-if="current == 3">
       <VuexComponent />
+      <VuexOtherComponent />
     </div>
   </div>
 </template>
@@ -21,6 +22,7 @@ import BusOtherComponent from "./components/BusOtherComponent.vue";
 import SharedHelloWorld from "./components/SharedHelloWorld.vue";
 import SharedOtherComponent from "./components/SharedOtherComponent.vue";
 import VuexComponent from "./components/VuexComponent.vue";
+import VuexOtherComponent from "./components/VuexOtherComponent.vue";
 
 export default {
   name: "App",
@@ -29,6 +31,7 @@ export default {
     BusOtherComponent,
     SharedHelloWorld,
     SharedOtherComponent,
+    VuexOtherComponent,
     VuexComponent
 },
   data() {
