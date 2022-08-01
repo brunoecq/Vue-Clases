@@ -1,0 +1,3 @@
+Temperaturas o km a cm
+https://github.com/vuejs/devtools/discussions/1692#discussioncomment-2140897
+version legacy para viajar en el tiempo
